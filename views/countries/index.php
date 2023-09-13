@@ -22,31 +22,30 @@ $this->registerJs("
 <div class="countries-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Create Countries', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
+    
     <!-- <?php 
     echo $this->render('_search', ['model' => $searchModel]); 
     ?> -->
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        // 'filterModel' => $searchModel,
-        'columns' => [
-            // ['class' => 'yii\grid\SerialColumn'],
-            'id',
-            'name',
-            [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Countries $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id]);
-                 }
-            ],
+<?= GridView::widget([
+    'dataProvider' => $dataProvider,
+    // 'filterModel' => $searchModel,
+    'columns' => [
+        // ['class' => 'yii\grid\SerialColumn'],
+        'id',
+        'name',
+        [
+            'class' => ActionColumn::className(),
+            'urlCreator' => function ($action, Countries $model, $key, $index, $column) {
+                return Url::toRoute([$action, 'id' => $model->id]);
+            }
         ],
-    ]); ?>
+    ],
+]); ?>
 
 
-    <button type="button" id="testButton" class="rounded-1 border-0 px-4 py-1">Click</button>
+    <p>
+        <?= Html::a('Add Country', ['create'], ['class' => 'btn btn-outline-primary']) ?>
+    </p>
+
 </div>

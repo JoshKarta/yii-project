@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
+
 /**
  * CountriesController implements the CRUD actions for Countries model.
  */
@@ -28,8 +29,8 @@ class CountriesController extends Controller
                         'delete' => ['POST'],
                     ],
                 ],
-            ]
-        );
+                ]
+            );
     }
 
     /**
@@ -41,13 +42,13 @@ class CountriesController extends Controller
     {
         $searchModel = new CountriesSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
-
+        
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
-
+    
     /**
      * Displays a single Countries model.
      * @param int $id ID
@@ -60,7 +61,7 @@ class CountriesController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
-
+    
     /**
      * Creates a new Countries model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -69,11 +70,12 @@ class CountriesController extends Controller
     public function actionCreate()
     {
         $model = new Countries();
-
+        $isSuccess = false;
+        
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                Yii::$app->session->setFlash("success", "Country added successfully");
-                // return $this->redirect("/countries/index");
+                $isSuccess = true;
+                // return $this->$isSuccess;
             }
         } else {
             $model->loadDefaultValues();
@@ -81,6 +83,7 @@ class CountriesController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'isSuccess' => $isSuccess,
         ]);
     }
 

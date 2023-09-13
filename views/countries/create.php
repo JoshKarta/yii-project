@@ -8,32 +8,28 @@ use yii\helpers\Html;
 $this->title = 'Create Countries';
 $this->params['breadcrumbs'][] = ['label' => 'Countries', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-// $this->registerJs("
-//     $('#liveToastBtn').click(function(){
-//         Toast()
-//     })
-// ")
+$test = 1234
 
 ?>
 <div class="countries-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?php
-    if (Yii::$app->session->hasFlash("success")) {
+    <?php if ($isSuccess)
         $this->registerJs("
-                OpenToast()
-                setTimeout(function() {
-                    window.location.href = '" . Yii::$app->urlManager->createUrl(['countries/index']) . "';
-                }, 3000); // 3000 milliseconds (3 seconds)
-                
-            ");
-    }
+                    OpenToast()
+                    setTimeout(function() {
+                        window.location.href = '" . Yii::$app->urlManager->createUrl(['countries/index']) . "';
+                    }, 3000); // 3000 milliseconds (3 seconds)  
+                ");
+
     ?>
 
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
+    <div class="mt-4 ">
+        <?= $this->render('_form', [
+            'model' => $model,
+        ]) ?>
+    </div>
 
     <div class="toast-container position-fixed top-0 end-0 p-3">
         <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="background-color:white;">
@@ -48,7 +44,5 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
     </div>
-
-    <button type="button" class="btn btn-outline-primary" id="liveToastBtn">Open Toast</button>
 
 </div>
