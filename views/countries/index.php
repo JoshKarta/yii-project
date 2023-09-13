@@ -27,22 +27,24 @@ $this->registerJs("
     echo $this->render('_search', ['model' => $searchModel]); 
     ?> -->
 
-<?= GridView::widget([
-    'dataProvider' => $dataProvider,
-    // 'filterModel' => $searchModel,
-    'columns' => [
-        // ['class' => 'yii\grid\SerialColumn'],
-        'id',
-        'name',
-        [
-            'class' => ActionColumn::className(),
-            'urlCreator' => function ($action, Countries $model, $key, $index, $column) {
-                return Url::toRoute([$action, 'id' => $model->id]);
-            }
+<div class="mt-4 ">
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        // 'filterModel' => $searchModel,
+        'columns' => [
+            // ['class' => 'yii\grid\SerialColumn'],
+            'id',
+            'name',
+            [
+                'class' => ActionColumn::className(),
+                'urlCreator' => function ($action, Countries $model, $key, $index, $column) {
+                    return Url::toRoute([$action, 'id' => $model->id]);
+                }
+            ],
         ],
-    ],
-]); ?>
-
+    ]); ?>
+    
+</div>
 
     <p>
         <?= Html::a('Add Country', ['create'], ['class' => 'btn btn-outline-primary']) ?>
