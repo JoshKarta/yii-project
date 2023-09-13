@@ -27,14 +27,15 @@ $this->registerJs("
         <?= Html::a('Create Countries', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <!-- <?php 
+    echo $this->render('_search', ['model' => $searchModel]); 
+    ?> -->
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        // 'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
+            // ['class' => 'yii\grid\SerialColumn'],
             'id',
             'name',
             [
@@ -47,6 +48,5 @@ $this->registerJs("
     ]); ?>
 
 
-    <button type="button" id="testButton">Click</button>
-
+    <button type="button" id="testButton" class="rounded-1 border-0 px-4 py-1">Click</button>
 </div>

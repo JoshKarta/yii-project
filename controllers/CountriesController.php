@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Countries;
 use app\models\CountriesSearch;
+use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -71,7 +72,8 @@ class CountriesController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect("/countries/index");
+                Yii::$app->session->setFlash("success", "Country added successfully");
+                // return $this->redirect("/countries/index");
             }
         } else {
             $model->loadDefaultValues();
