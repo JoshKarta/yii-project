@@ -18,7 +18,7 @@ class CountriesSearch extends Countries
     {
         return [
             [['id'], 'integer'],
-            [['name'], 'safe'],
+            [['country', 'city'], 'safe'],
         ];
     }
 
@@ -61,7 +61,8 @@ class CountriesSearch extends Countries
             'id' => $this->id,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name]);
+        $query->andFilterWhere(['like', 'country', $this->country])
+            ->andFilterWhere(['like', 'city', $this->city]);
 
         return $dataProvider;
     }

@@ -40,6 +40,10 @@ a.desc:after {
     border-bottom-width: 0;
 }
 
+.grid-view > .summary{
+    margin-bottom: 8px;
+}
+
 .grid-view th {
     white-space: nowrap;
 }

@@ -4,11 +4,9 @@ namespace app\controllers;
 
 use app\models\Countries;
 use app\models\CountriesSearch;
-use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
 
 /**
  * CountriesController implements the CRUD actions for Countries model.
@@ -29,8 +27,8 @@ class CountriesController extends Controller
                         'delete' => ['POST'],
                     ],
                 ],
-                ]
-            );
+            ]
+        );
     }
 
     /**
@@ -42,13 +40,13 @@ class CountriesController extends Controller
     {
         $searchModel = new CountriesSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
-        
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
-    
+
     /**
      * Displays a single Countries model.
      * @param int $id ID
@@ -61,7 +59,7 @@ class CountriesController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
-    
+
     /**
      * Creates a new Countries model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -71,11 +69,11 @@ class CountriesController extends Controller
     {
         $model = new Countries();
         $isSuccess = false;
-        
+
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
                 $isSuccess = true;
-                // return $this->$isSuccess;
+                // return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -99,7 +97,7 @@ class CountriesController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect("/countries/index");
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
