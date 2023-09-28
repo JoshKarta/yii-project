@@ -9,16 +9,15 @@ function Toast() {
   if (toastTrigger) {
     const toastBootstrap =
       bootstrap.Toast.getOrCreateInstance(toastLiveExample);
-    // toastTrigger.addEventListener("click", () => {
+    toastTrigger.addEventListener("click", () => {
       toastBootstrap.show();
-    // });
+    });
   }
 }
 
 function OpenToast() {
   const toastLiveExample = document.getElementById("liveToast");
 
-  const toastBootstrap =
-      bootstrap.Toast.getOrCreateInstance(toastLiveExample);
-      toastBootstrap.show();
+  const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+  toastBootstrap.show();
 }
