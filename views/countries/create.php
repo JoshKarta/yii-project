@@ -14,14 +14,14 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?php
-        if ($isSuccess) {
-            $this->registerJs("
+    if ($isSuccess) {
+        $this->registerJs("
                 OpenToast();
                 setTimeout(function(){
                     window.location.href = '" . Yii::$app->urlManager->createUrl(['countries/index']) . "';
-                }, 3000)
+                }, 1000)
             ");
-        }
+    }
     ?>
 
     <?= $this->render('_form', [
