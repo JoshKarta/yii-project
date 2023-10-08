@@ -21,3 +21,21 @@ function OpenToast() {
   const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
   toastBootstrap.show();
 }
+
+function Stepper() {
+    $(document).ready(function() {
+        $('#next-btn').click(function() {
+            $('#form-a').fadeOut('fast', function() {
+                $('#form-b').fadeIn('fast');
+                $('#previous-btn').show()
+            });
+        });
+
+        $('#previous-btn').click(function() {
+          $('#form-b').fadeOut('fast', function() {
+              $('#form-a').fadeIn('fast');
+              $('#previous-btn').hide();
+          });
+      });
+    });
+}
