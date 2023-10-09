@@ -2,6 +2,7 @@
 
 
 /** @var yii\web\View $this */
+
 $this->title = "Test";
 $this->registerJs("
     Toast();
@@ -14,6 +15,8 @@ $this->registerJs("
     <div class="pt-4">
         <h1 class="text-center">This a test page</h1>
 
+        <!-- Components testing section -->
+        <h3>Components testing section</h3>
         <div>
             <div class="row mt-5">
                 <div class="col">
@@ -109,7 +112,7 @@ $this->registerJs("
                         <div class="accordion w-100 " id="accordionExample">
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                         Accordion Item #1
                                     </button>
                                 </h2>
@@ -149,6 +152,8 @@ $this->registerJs("
             </div>
         </div>
 
+        <!-- Stepper testing section -->
+        <h3>Stepper testing section</h3>
         <div class="row mt-5">
             <div id="form-a">
                 <div class="input-group mb-3">
@@ -161,9 +166,18 @@ $this->registerJs("
                     <span class="input-group-text" id="basic-addon1">@</span>
                     <input type="text" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
-            <button type="button" class="btn btn-success" id="previous-btn" style="display:none">Previous</button>
-            <button type="button" class="btn btn-success" id="next-btn">Next</button>
+                <button type="button" class="btn btn-success" id="prevBtn" style="display:none">Previous</button>
+                <button type="button" class="btn btn-success" id="nextBtn">Next</button>
             </div>
-    </div>
+        </div>
+
+        <!-- Form testing Section -->
+        <div class="mt-5">
+            <h3>Form testing Section</h3>
+            <?= $this->render('@app/views/countries/_form', [
+                'model' => $model,
+            ]) ?>
+        </div>
+
     </div>
 </div>

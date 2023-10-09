@@ -9,6 +9,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\Countries;
 
 class SiteController extends Controller
 {
@@ -71,7 +72,19 @@ class SiteController extends Controller
      */
     public function actionTest()
     {
-        return $this->render('test');
+        $model = new Countries();
+
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post()) && $model->save()) {
+                return $this->redirect('/site/index');
+            }
+        } else {
+            $model->loadDefaultValues();
+        }
+
+        return $this->render('test', [
+            'model' => $model
+        ]);
     }
 
     /**
