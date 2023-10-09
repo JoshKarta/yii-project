@@ -24,17 +24,21 @@ function OpenToast() {
 
 function Stepper() {
     $(document).ready(function() {
-        $('#next-btn').click(function() {
+        $('#nextBtn').click(function() {
             $('#form-a').fadeOut('fast', function() {
                 $('#form-b').fadeIn('fast');
-                $('#previous-btn').show()
+                $('#prevBtn').show()
+                $('#nextBtn').hide()
+                $('#submitBtn').show()
             });
         });
 
-        $('#previous-btn').click(function() {
+        $('#prevBtn').click(function() {
           $('#form-b').fadeOut('fast', function() {
               $('#form-a').fadeIn('fast');
-              $('#previous-btn').hide();
+              $('#prevBtn').hide();
+              $('#submitBtn').hide();
+              $('#nextBtn').show();
           });
       });
     });
