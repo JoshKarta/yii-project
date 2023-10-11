@@ -44,10 +44,7 @@ $this->registerJsFile('@web/js/main.js', ['position' => \yii\web\View::POS_END])
             'items' => [
                 ['label' => 'Home', 'url' => ['/site/index']],
                 ['label' => 'About', 'url' => ['/site/about']],
-                ['label' => 'Countries', 'url' => ['/countries/index']],
                 ['label' => 'Contact', 'url' => ['/site/contact']],
-                ['label' => 'Test', 'url' => ['/site/test']],
-                ['label' => 'Junkyard', 'url' => ['/samplicious/index']],
                 Yii::$app->user->isGuest
                     ? ['label' => 'Login', 'url' => ['/site/login']] :
                     [
@@ -59,6 +56,15 @@ $this->registerJsFile('@web/js/main.js', ['position' => \yii\web\View::POS_END])
                             ],
                         ],
                     ],
+                [
+                    'label' => 'Customs',
+                    'items' => [
+                        ['label' => 'Countries', 'url' => ['/countries/index']],
+                        ['label' => 'Test', "url" => ['/site/test']],
+                        ['label' => 'Samplicious', "url" => ['/samplicious/index']],
+                        ['label' => 'Ajax', "url" => ['/site/ajax']],
+                    ],
+                ],
             ]
         ]);
         NavBar::end();
