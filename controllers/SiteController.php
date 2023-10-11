@@ -148,4 +148,35 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+    public function actionAjax()
+    {
+        $model = new Countries();
+        if (Yii::$app->request->isAjax) {
+            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return [
+                    'data' => [
+                        'success' => true,
+                        'model' => $model,
+                        'message' => 'Country saved',
+                    ],
+                    'code' => 0,
+                ];
+            } else {
+                return [
+                    'data' => [
+                        'success' => false,
+                        'model' => null,
+                        'message' => 'An error occured.',
+                    ],
+                    'code' => 1, // Some semantic codes that you know them for yourself
+                ];
+            }
+        }
+        return $this->render('ajax', [
+            'model' => $model
+        ]);
+    }
 }
