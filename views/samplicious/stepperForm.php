@@ -13,8 +13,6 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(['id' => 'samplicious-form']); ?>
 
-    <?= $form->field($samplicious, 'name')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($samplicious, 'date')->textInput(['autocomplete' => 'off']) ?>
     <!-- <?= $form->field($samplicious, 'date')->widget(DatePicker::className(), ['dateFormat' => 'yyyy-MM-dd', 'inline' => false]) ?> -->
 

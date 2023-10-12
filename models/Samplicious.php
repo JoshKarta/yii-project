@@ -7,9 +7,10 @@ use Yii;
 /**
  * This is the model class for table "samplicious".
  *
- * @property int $id
  * @property string|null $date
- * @property string|null $name
+ * @property string|null $user_id
+ *
+ * @property Users $user
  */
 class Samplicious extends \yii\db\ActiveRecord
 {
@@ -28,7 +29,8 @@ class Samplicious extends \yii\db\ActiveRecord
     {
         return [
             [['date'], 'safe'],
-            [['name'], 'string', 'max' => 45],
+            [['user_id'], 'string', 'max' => 36],
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::class, 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
 
@@ -38,9 +40,18 @@ class Samplicious extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
             'date' => 'Date',
-            'name' => 'Name',
+            'user_id' => 'User ID',
         ];
+    }
+
+    /**
+     * Gets query for [[User]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser()
+    {
+        return $this->hasOne(Users::class, ['id' => 'user_id']);
     }
 }

@@ -14,8 +14,11 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(['id' => 'countries-form']); ?>
 
     <div class="row">
-        <div class="col"><?= $form->field($countries, 'country')->textInput(['maxlength' => true]) ?></div>
-        <div class="col"><?= $form->field($countries, 'city')->textInput(['maxlength' => true]) ?></div>
+        <?= $form->field($countries, 'country')->textInput(['maxlength' => true]) ?>
+
+        <?= $form->field($countries, 'city')->textInput(['maxlength' => true]) ?>
+
+        <?= $form->field($countries, 'user_id')->textInput(['maxlength' => true]) ?>
     </div>
 
     <div class="form-group">

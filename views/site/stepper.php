@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <code><?= __FILE__ ?></code>
 
     <div class="mt-5">
-        <div id="stepProgressBar">
+        <!-- <div id="stepProgressBar">
             <div class="step">
                 <div class="bullet current">1</div>
                 <p>Step 1</p>
@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <div class="bullet">2</div>
                 <p>Step 1</p>
             </div>
-        </div>
+        </div> -->
 
         <div>
             <div id="form-countries">

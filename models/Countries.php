@@ -8,8 +8,11 @@ use Yii;
  * This is the model class for table "countries".
  *
  * @property int $id
- * @property string $country
- * @property string $city
+ * @property string|null $country
+ * @property string|null $city
+ * @property string|null $user_id
+ *
+ * @property Users $user
  */
 class Countries extends \yii\db\ActiveRecord
 {
@@ -27,8 +30,9 @@ class Countries extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['country', 'city'], 'required'],
             [['country', 'city'], 'string', 'max' => 255],
+            [['user_id'], 'string', 'max' => 36],
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::class, 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
 
@@ -41,6 +45,17 @@ class Countries extends \yii\db\ActiveRecord
             'id' => 'ID',
             'country' => 'Country',
             'city' => 'City',
+            'user_id' => 'User ID',
         ];
+    }
+
+    /**
+     * Gets query for [[User]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser()
+    {
+        return $this->hasOne(Users::class, ['id' => 'user_id']);
     }
 }

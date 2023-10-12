@@ -1,24 +1,24 @@
 <?php
 
-use app\models\Samplicious;
+use app\models\Users;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 
 /** @var yii\web\View $this */
-/** @var app\models\SampliciousSearch $searchModel */
+/** @var app\models\UsersSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Sampliciouses';
+$this->title = 'Users';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="samplicious-index">
+<div class="users-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Samplicious', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Users', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -29,12 +29,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'date',
-            'user_id',
+            'id',
+            'name',
+            'created_at',
             [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Samplicious $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'user_id' => $model->user_id]);
+                'urlCreator' => function ($action, Users $model, $key, $index, $column) {
+                    return Url::toRoute([$action, 'id' => $model->id]);
                  }
             ],
         ],

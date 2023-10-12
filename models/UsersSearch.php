@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Samplicious;
+use app\models\Users;
 
 /**
- * SampliciousSearch represents the model behind the search form of `app\models\Samplicious`.
+ * UsersSearch represents the model behind the search form of `app\models\Users`.
  */
-class SampliciousSearch extends Samplicious
+class UsersSearch extends Users
 {
     /**
      * {@inheritdoc}
@@ -17,7 +17,7 @@ class SampliciousSearch extends Samplicious
     public function rules()
     {
         return [
-            [['date', 'user_id'], 'safe'],
+            [['id', 'name', 'created_at'], 'safe'],
         ];
     }
 
@@ -39,7 +39,7 @@ class SampliciousSearch extends Samplicious
      */
     public function search($params)
     {
-        $query = Samplicious::find();
+        $query = Users::find();
 
         // add conditions that should always apply here
 
@@ -56,11 +56,9 @@ class SampliciousSearch extends Samplicious
         }
 
         // grid filtering conditions
-        $query->andFilterWhere([
-            'date' => $this->date,
-        ]);
-
-        $query->andFilterWhere(['like', 'user_id', $this->user_id]);
+        $query->andFilterWhere(['like', 'id', $this->id])
+            ->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'created_at', $this->created_at]);
 
         return $dataProvider;
     }
