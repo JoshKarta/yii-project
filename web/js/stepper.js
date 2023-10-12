@@ -1,9 +1,19 @@
 const countriesData = { action: "/countries/create" };
 const sampliciousData = { action: "/samplicious/create" };
 
-function stepOne() {
+const bulletDivs = [...document.querySelectorAll(".bullet")];
+const stepLineDivs = [...document.querySelectorAll(".step-line")];
+const totalBullets = bulletDivs.length;
+let currentStep = 1;
+
+function nextButton() {
+  // Get form with id
   const form = document.getElementById("countries-form");
+
+  // Save form values in array and place it in countriesData
   countriesData.data = $(form).serializeArray();
+
+  // Change form
   $("#form-countries").fadeOut("fast", function () {
     $("#form-samplicious").fadeIn("fast");
     $("#prevSampBtn").show();
@@ -11,25 +21,32 @@ function stepOne() {
     $("#submitFormBtn").show();
   });
 
-  // Prev Step
-  prevButton();
+  // Update Steps
+  const currentBullet = bulletDivs[currentStep - 1];
+  currentBullet.classList.add("completed");
+  // currentStep++;
 }
 
-function prevButton() {
-  $("#prevSampBtn").click(function () {
-    $("#form-samplicious").fadeOut("fast", function () {
-      $("#form-countries").fadeIn("fast");
-      $("#prevSampBtn").hide();
-      $("#submitFormBtn").hide();
-      $("#countriesBtn").show();
-    });
+function previousButton() {
+  // Display form
+  $("#form-samplicious").fadeOut("fast", function () {
+    $("#form-countries").fadeIn("fast");
+    $("#prevSampBtn").hide();
+    $("#submitFormBtn").hide();
+    $("#countriesBtn").show();
   });
-}
 
-function sendBtn() {
+  // Get form values
   const form = document.getElementById("samplicious-form");
   sampliciousData.data = $(form).serializeArray();
 
+  // Update stepper
+  const currentBullet = bulletDivs[currentStep - 1];
+  currentBullet.classList.remove("completed");
+  // currentStep--;
+}
+
+function submitButton() {
   ajaxCall(sampliciousData.action, sampliciousData.data);
   ajaxCall(countriesData.action, countriesData.data);
 }

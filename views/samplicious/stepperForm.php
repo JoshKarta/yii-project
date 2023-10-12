@@ -19,9 +19,8 @@ use yii\widgets\ActiveForm;
     <!-- <?= $form->field($samplicious, 'date')->widget(DatePicker::className(), ['dateFormat' => 'yyyy-MM-dd', 'inline' => false]) ?> -->
 
     <div class="form-group">
-        <?= Html::button('Previous', ['class' => 'btn btn-outline-success', 'id' => 'prevSampBtn', 'onClick' => 'prevButton()']) ?>
-        <?= Html::button('Submit', ['class' => 'btn btn-success', 'id' => 'submitBtn', 'onClick' => 'sendBtn()']) ?>
-        <!-- <?= Html::submitButton('Submit', ['class' => 'btn btn-success', 'id' => 'submitFormBtn']) ?> -->
+        <?= Html::button('Previous', ['class' => 'btn btn-outline-success', 'onClick' => 'previousButton()']) ?>
+        <?= Html::button('Submit', ['class' => 'btn btn-success', 'onClick' => 'submitButton()']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

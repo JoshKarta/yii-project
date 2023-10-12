@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
     </div>
 
     <div class="form-group">
-        <?= Html::button('Next', ['class' => 'btn btn-outline-success', 'onClick' => 'stepOne()']) ?>
+        <?= Html::button('Next', ['class' => 'btn btn-outline-success', 'onClick' => 'nextButton()']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

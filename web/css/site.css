@@ -99,3 +99,51 @@ a.desc:after {
 .form-group {
   margin-bottom: 1rem;
 }
+
+/* Stepper */
+#stepProgressBar {
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center */
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.bullet {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(245 245 245);
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  position: relative;
+  transition: background-color 300ms;
+}
+
+.bullet.current {
+  color: #198754;
+}
+
+.bullet.completed {
+  background-color: #198754;
+  color: white;
+}
+
+.step-line {
+  flex-grow: 1;
+  height: 1px;
+  margin: 24px 24px 0;
+  background-color: rgb(229 229 229);
+}
+
+.step-line.completed {
+  background-color: #198754;
+}
