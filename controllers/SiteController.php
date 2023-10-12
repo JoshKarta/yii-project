@@ -10,6 +10,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Countries;
+use app\models\Samplicious;
 
 class SiteController extends Controller
 {
@@ -72,18 +73,22 @@ class SiteController extends Controller
      */
     public function actionTest()
     {
+        $countries = new Countries();
+        $samplicious = new Samplicious();
         $model = new Countries();
 
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect('/site/index');
-            }
-        } else {
-            $model->loadDefaultValues();
-        }
+        // if ($this->request->isPost) {
+        //     if ($model->load($this->request->post()) && $model->save()) {
+        //         return $this->redirect('/site/index');
+        //     }
+        // } else {
+        //     $model->loadDefaultValues();
+        // }
 
         return $this->render('test', [
-            'model' => $model
+            'countries' => $countries,
+            'samplicious' => $samplicious,
+            'model' => $model,
         ]);
     }
 
@@ -177,6 +182,44 @@ class SiteController extends Controller
         }
         return $this->render('ajax', [
             'model' => $model
+        ]);
+    }
+    public function actionStepper()
+    {
+        $countries = new Countries();
+        $samplicious = new Samplicious();
+        if (Yii::$app->request->isAjax) {
+            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+            if ($countries->load(Yii::$app->request->post()) && $countries->save() && $samplicious->load(Yii::$app->request->post()) && $samplicious->save()) {
+                return [
+                    'data' => [
+                        'success' => true,
+                        'model' => $countries,
+                        'message' => 'Country saved',
+                    ],
+                    'code' => 0,
+                    'data' => [
+                        'success' => true,
+                        'model' => $samplicious,
+                        'message' => 'Samplicious saved',
+                    ],
+                    'code' => 0,
+                ];
+            } else {
+                return [
+                    'data' => [
+                        'success' => false,
+                        'model' => null,
+                        'message' => 'An error occured.',
+                    ],
+                    'code' => 1, // Some semantic codes that you know them for yourself
+                ];
+            }
+        }
+        return $this->render('stepper', [
+            'countries' => $countries,
+            'samplicious' => $samplicious,
         ]);
     }
 }

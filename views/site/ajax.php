@@ -26,7 +26,7 @@ jQuery(document).ready(function($) {
                 data: data,
                 success: function (res) {
                     console.log(res)
-                    window.location.href="/site/index"
+                    // window.location.href="/site/index"
                 }
             })
             .fail(function() {

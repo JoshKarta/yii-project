@@ -7,7 +7,8 @@ $this->title = "Test";
 $this->registerJs("
     Toast();
     Stepper();
-");
+    saveCountriesData();
+    ");
 
 ?>
 
@@ -153,21 +154,23 @@ $this->registerJs("
         </div>
 
         <!-- Stepper testing section -->
-        <h3>Stepper testing section</h3>
-        <div class="row mt-5">
-            <div id="form-a">
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">@</span>
-                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        <div>
+            <h3>Stepper testing section</h3>
+            <div class="row mt-5">
+                <div id="form-a">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">@</span>
+                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
                 </div>
-            </div>
-            <div>
-                <div class="input-group mb-3" id="form-b" style="display:none">
-                    <span class="input-group-text" id="basic-addon1">@</span>
-                    <input type="text" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
+                <div>
+                    <div class="input-group mb-3" id="form-b" style="display:none">
+                        <span class="input-group-text" id="basic-addon1">@</span>
+                        <input type="text" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
+                    </div>
+                    <button type="button" class="btn btn-success" id="prevBtn" style="display:none">Previous</button>
+                    <button type="button" class="btn btn-success" id="nextBtn">Next</button>
                 </div>
-                <button type="button" class="btn btn-success" id="prevBtn" style="display:none">Previous</button>
-                <button type="button" class="btn btn-success" id="nextBtn">Next</button>
             </div>
         </div>
 
@@ -179,5 +182,19 @@ $this->registerJs("
             ]) ?>
         </div>
 
+        <!-- Form with stepper Section -->
+        <div class="mt-5">
+            <h3>Form with stepper</h3>
+            <div id="form-countries">
+                <?= $this->render('@app/views/countries/stepperForm', [
+                    'countries' => $countries,
+                ]) ?>
+            </div>
+            <div id="form-samplicious" style="display: none;">
+                <?= $this->render('@app/views/samplicious/stepperForm', [
+                    'samplicious' => $samplicious,
+                ]) ?>
+            </div>
+        </div>
     </div>
 </div>

@@ -17,7 +17,7 @@ use yii\widgets\ActiveForm;
             <div class="col"><?= $form->field($model, 'country')->textInput(['maxlength' => true]) ?></div>
             <div class="col"><?= $form->field($model, 'city')->textInput(['maxlength' => true]) ?></div>
         </div>
-        
+
         <div class="form-group">
             <?= Html::submitButton('Add', ['class' => 'btn btn-success']) ?>
         </div>

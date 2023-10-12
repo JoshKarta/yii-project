@@ -18,7 +18,8 @@ $this->registerMetaTag(['name' => 'viewport', 'content' => 'width=device-width, 
 $this->registerMetaTag(['name' => 'description', 'content' => $this->params['meta_description'] ?? '']);
 $this->registerMetaTag(['name' => 'keywords', 'content' => $this->params['meta_keywords'] ?? '']);
 $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii::getAlias('@web/favicon.ico')]);
-$this->registerJsFile('@web/js/main.js', ['position' => \yii\web\View::POS_END])
+$this->registerJsFile('@web/js/main.js', ['position' => \yii\web\View::POS_END]);
+$this->registerJsFile('@web/js/stepper.js', ['position' => \yii\web\View::POS_END]);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -63,6 +64,7 @@ $this->registerJsFile('@web/js/main.js', ['position' => \yii\web\View::POS_END])
                         ['label' => 'Test', "url" => ['/site/test']],
                         ['label' => 'Samplicious', "url" => ['/samplicious/index']],
                         ['label' => 'Ajax', "url" => ['/site/ajax']],
+                        ['label' => 'Stepper', "url" => ['/site/stepper']],
                     ],
                 ],
             ]
