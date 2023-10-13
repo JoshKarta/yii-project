@@ -8,18 +8,18 @@ use yii\widgets\ActiveForm;
 /** @var yii\widgets\ActiveForm $form */
 ?>
 
-<div class="users-form">
+<div>
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+        'action' => '/users/create',
+        'id' => 'personalInfoForm'
+    ]); ?>
 
-    <?= $form->field($model, 'id')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'created_at')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($users, 'name')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::button('Next', ['class' => 'btn btn-outline-success next-button', 'onCLick' => 'nextButton("personalInfoForm","countriesForm")', 'data-step' => '1']) ?>
+        <!-- <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?> -->
     </div>
 
     <?php ActiveForm::end(); ?>

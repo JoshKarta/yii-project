@@ -11,13 +11,13 @@ use yii\widgets\ActiveForm;
 
 <div>
 
-    <?php $form = ActiveForm::begin(['id' => 'samplicious-form']); ?>
+    <?php $form = ActiveForm::begin(['action' => '/samplicious/create', 'id' => 'sampliciousForm']); ?>
 
     <?= $form->field($samplicious, 'date')->textInput(['autocomplete' => 'off']) ?>
     <!-- <?= $form->field($samplicious, 'date')->widget(DatePicker::className(), ['dateFormat' => 'yyyy-MM-dd', 'inline' => false]) ?> -->
 
     <div class="form-group">
-        <?= Html::button('Previous', ['class' => 'btn btn-outline-success', 'onClick' => 'previousButton()']) ?>
+        <?= Html::button('Previous', ['class' => 'btn btn-outline-success previous-button', 'onClick' => 'previousButton("sampliciousForm","countriesForm")']) ?>
         <?= Html::button('Submit', ['class' => 'btn btn-success', 'onClick' => 'submitButton()']) ?>
     </div>
 

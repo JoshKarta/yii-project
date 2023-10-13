@@ -11,18 +11,18 @@ use yii\widgets\ActiveForm;
 
 <div class="">
 
-    <?php $form = ActiveForm::begin(['id' => 'countries-form']); ?>
+    <?php $form = ActiveForm::begin(['action' => '/countries/create', 'id' => 'countriesForm']); ?>
 
     <div class="row">
         <?= $form->field($countries, 'country')->textInput(['maxlength' => true]) ?>
 
         <?= $form->field($countries, 'city')->textInput(['maxlength' => true]) ?>
 
-        <?= $form->field($countries, 'user_id')->textInput(['maxlength' => true]) ?>
     </div>
 
     <div class="form-group">
-        <?= Html::button('Next', ['class' => 'btn btn-outline-success', 'onClick' => 'nextButton()']) ?>
+        <?= Html::button('Previous', ['class' => 'btn btn-outline-success previous-button', 'onClick' => 'previousButton("countriesForm","personalInfoForm")']) ?>
+        <?= Html::button('Next', ['class' => 'btn btn-outline-success', 'onClick' => 'nextButton("countriesForm", "sampliciousForm")']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

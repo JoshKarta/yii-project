@@ -11,6 +11,7 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Countries;
 use app\models\Samplicious;
+use app\models\Users;
 
 class SiteController extends Controller
 {
@@ -184,42 +185,56 @@ class SiteController extends Controller
             'model' => $model
         ]);
     }
+
+
     public function actionStepper()
     {
         $countries = new Countries();
         $samplicious = new Samplicious();
-        if (Yii::$app->request->isAjax) {
-            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        $users = new Users();
 
-            if ($countries->load(Yii::$app->request->post()) && $countries->save() && $samplicious->load(Yii::$app->request->post()) && $samplicious->save()) {
-                return [
-                    'data' => [
-                        'success' => true,
-                        'model' => $countries,
-                        'message' => 'Country saved',
-                    ],
-                    'code' => 0,
-                    'data' => [
-                        'success' => true,
-                        'model' => $samplicious,
-                        'message' => 'Samplicious saved',
-                    ],
-                    'code' => 0,
-                ];
-            } else {
-                return [
-                    'data' => [
-                        'success' => false,
-                        'model' => null,
-                        'message' => 'An error occured.',
-                    ],
-                    'code' => 1, // Some semantic codes that you know them for yourself
-                ];
-            }
-        }
+        // if (Yii::$app->request->isAjax) {
+        //     Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+
+        //     if ($countries->load(Yii::$app->request->post()) && $countries->save() && $countries->load(Yii::$app->request->post()) && $countries->save() && $samplicious->load(Yii::$app->request->post()) && $samplicious->save()) {
+        //         return [
+        //             'data' => [
+        //                 'success' => true,
+        //                 'model' => $users,
+        //                 'message' => 'Country saved',
+        //             ],
+        //             'code' => 0,
+        //             'data' => [
+        //                 'success' => true,
+        //                 'model' => $countries,
+        //                 'message' => 'Samplicious saved',
+        //             ],
+        //             'code' => 0,
+        //             'data' => [
+        //                 'success' => true,
+        //                 'model' => $samplicious,
+        //                 'message' => 'Samplicious saved',
+        //             ],
+        //             'code' => 0,
+        //         ];
+        //     } else {
+        //         return [
+        //             'data' => [
+        //                 'success' => false,
+        //                 'model' => null,
+        //                 'message' => 'An error occured.',
+        //             ],
+        //             'code' => 1, // Some semantic codes that you know them for yourself
+        //         ];
+        //     }
+        // }
+
+
+
         return $this->render('stepper', [
             'countries' => $countries,
             'samplicious' => $samplicious,
+            'users' => $users
         ]);
     }
 }
