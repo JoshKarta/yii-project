@@ -17,11 +17,6 @@ $this->registerJs("")
     <div class="mt-5">
         <div id="stepProgressBar">
             <div class="step">
-                <div class="bullet" data-type="1">1</div>
-                <p>Personal</p>
-            </div>
-            <div class="step-line"></div>
-            <div class="step">
                 <div class="bullet">2</div>
                 <p>Countries</p>
             </div>
@@ -33,12 +28,7 @@ $this->registerJs("")
         </div>
 
         <div>
-            <div id="personalInfoForm">
-                <?= $this->render('@app/views/users/_form', [
-                    'users' => $users,
-                ]) ?>
-            </div>
-            <div id="countriesForm" style="display: none;">
+            <div id="countriesForm">
                 <?= $this->render('@app/views/countries/stepperForm', [
                     'countries' => $countries,
                 ]) ?>

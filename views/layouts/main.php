@@ -64,7 +64,7 @@ $this->registerJsFile('@web/js/stepper.js', ['position' => \yii\web\View::POS_EN
                         ['label' => 'Test', "url" => ['/site/test']],
                         ['label' => 'Samplicious', "url" => ['/samplicious/index']],
                         ['label' => 'Ajax', "url" => ['/site/ajax']],
-                        ['label' => 'Stepper', "url" => ['/site/stepper']],
+                        ['label' => 'Stepper', "url" => ['/site/step-1']],
                     ],
                 ],
             ]

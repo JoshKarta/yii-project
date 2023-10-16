@@ -187,54 +187,38 @@ class SiteController extends Controller
     }
 
 
-    public function actionStepper()
+    public function actionStepper($id)
     {
         $countries = new Countries();
         $samplicious = new Samplicious();
         $users = new Users();
 
-        // if (Yii::$app->request->isAjax) {
-        //     Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-
-        //     if ($countries->load(Yii::$app->request->post()) && $countries->save() && $countries->load(Yii::$app->request->post()) && $countries->save() && $samplicious->load(Yii::$app->request->post()) && $samplicious->save()) {
-        //         return [
-        //             'data' => [
-        //                 'success' => true,
-        //                 'model' => $users,
-        //                 'message' => 'Country saved',
-        //             ],
-        //             'code' => 0,
-        //             'data' => [
-        //                 'success' => true,
-        //                 'model' => $countries,
-        //                 'message' => 'Samplicious saved',
-        //             ],
-        //             'code' => 0,
-        //             'data' => [
-        //                 'success' => true,
-        //                 'model' => $samplicious,
-        //                 'message' => 'Samplicious saved',
-        //             ],
-        //             'code' => 0,
-        //         ];
-        //     } else {
-        //         return [
-        //             'data' => [
-        //                 'success' => false,
-        //                 'model' => null,
-        //                 'message' => 'An error occured.',
-        //             ],
-        //             'code' => 1, // Some semantic codes that you know them for yourself
-        //         ];
-        //     }
-        // }
-
-
-
         return $this->render('stepper', [
             'countries' => $countries,
             'samplicious' => $samplicious,
             'users' => $users
+        ]);
+    }
+
+    /**
+     * Displays about page.
+     *
+     * @return string
+     */
+    public function actionStep1()
+    {
+        $model = new Users();
+
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post()) && $model->save()) {
+                return $this->redirect(['stepper', 'id' => $model->id]);
+            }
+        } else {
+            $model->loadDefaultValues();
+        }
+
+        return $this->render('step-1', [
+            'model' => $model
         ]);
     }
 }
