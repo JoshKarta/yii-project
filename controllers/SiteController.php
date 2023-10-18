@@ -221,4 +221,15 @@ class SiteController extends Controller
             'model' => $model
         ]);
     }
+
+    public function actionButtflattery()
+    {
+        $model = new Users();
+        // $countries = new Countries();
+
+        return $this->render('buttflattery', [
+            'model' => $model,
+            // 'countries' => $countries,
+        ]);
+    }
 }
